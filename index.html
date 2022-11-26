@@ -1,0 +1,362 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>From128</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="icon" href="images/favicon.png">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-43112646-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-43112646-3');
+        </script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            function contact_me() {
+                var data = $("#contact-form :input").serializeArray();
+                data.push({name: 'formType', value: '128 General Contact'});
+                $.ajax({
+                    type: "POST",
+                    data: data,
+                    url: "Includes/128-contact-me.php",
+                    timeout: 5000,
+                    success: function (data) {
+                        tmp = JSON.parse(data);
+                        if (tmp.status == '1') {
+                            swal("Awesome!", tmp.message, "success");
+                            $("#contact-form")[0].reset();
+                            return;
+                        } else {
+                            swal({
+                                title: "Error",
+                                text: tmp.message,
+                                icon: "warning"
+                            });
+                            return;
+                        }
+                    }, //end success
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        if (textStatus === "timeout") {
+                            swal("Error", "Server response is taking longer than usual, pleas try again later.",
+                                    "error");
+                        }
+                    }
+                }); //end restroom request ajax
+            }
+        </script>
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    </head>
+    <body>
+
+        <!-- Header -->
+        <header id="header">
+            <nav>
+                <ul>
+                    <li><a href="#menu">Menu</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Menu -->
+        <nav id="menu">
+            <h2>Menu</h2>
+            <ul class="links">
+                <li><a href="projects.html">Portfolio</a></li>
+                <li><a href="more-about-me.html">About</a></li>
+                <li><a href="#contact-me-form-target">Contact</a></li>
+            </ul>
+            <!--            <ul class="actions vertical">
+                            <li><a href="#" class="button fit special">Get Started</a></li>
+                            <li><a href="#" class="button fit">Log In</a></li>
+                        </ul>-->
+        </nav>
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Intro -->
+            <section id="intro" class="wrapper featured style1">
+                <div class="inner">
+                    <span class="image"><img src="images/from128-logo-home.png" alt="" /></span>
+                    <div class="content">
+                        <header>
+                            <h1>Welcome to From128</h1>
+                            <p>Transforming products from 1 to infinity.</p>
+                        </header>
+                    </div>
+                </div>
+            </section>
+
+            <!-- One -->
+            <section class="wrapper style2 special">
+                <div class="inner">
+                    <header>
+                        <h2>Hi, I'm Stefan</h2>
+                        <p>Technical product manager living in New York. 
+                            Passionate about all things technological and always looking 
+                            for ways to make it better.</p>
+                    </header>
+                    <ul class="icons major style2">
+                        <li><span class="icon fa-code"><span class="label">Code</span></span></li><li>
+                            <span class="icon fa-cog"><span class="label">Optimization</span></span></li><li>
+                            <span class="icon fa-superpowers"><span class="label">Database</span></span></li><li>
+                            <span class="icon fa-handshake-o"><span class="label">Unity</span></span></li><li>
+                            <span class="icon fa-users"><span class="label">No I in team</span></span></li>
+                    </ul>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="more-about-me.html" class="button special">More about me</a></li>
+                        </ul>
+                    </footer>
+                </div>
+            </section>
+
+            <!-- Two -->
+            <section class="wrapper style1 special">
+                <div class="inner">
+                    <header>
+                        <h2>Portfolio</h2>
+                        <p>
+                            <!--                            A remarkable product manager dreams like a unicorn, thinks like 
+                                                        an engineer, attends like a therapist, and leads as a five-star general. As a PM, I 
+                                                        always ask myself, -->
+                            If I were a product manager 
+                            at such-and-such company, how do I make this-and-that better....
+                        </p>
+                    </header>
+                    <section class="spotlight">
+                        <span class="image"><img src="images/peloton-logo-trans.png" alt="Peloton logo" /></span>
+                        <div class="content">
+                            <header>
+                                <h3>Peloton: VAR</h3>
+                                <a target="_blank" href="https://onepeloton.com/">www.onepeloton.com</a>
+                            </header><br />
+                            <p>
+                                Peloton VAR is a VR/AR headset that enables users to enjoy bike rides 
+                                outdoor with coaches in real-time, while staying at home.
+                            </p>
+                            <footer>
+                                <ul class="actions">
+                                    <li><a href="peloton-var.html" class="button">Details</a></li>
+                                </ul>
+                            </footer>
+                        </div>
+                    </section>
+                    <section class="spotlight">
+                        <span class="image"><img src="images/facebook-logo-white-bg.png" alt="Facebook logo" /></span>
+                        <div class="content">
+                            <header>
+                                <h3>Facebook: Movie Night</h3>
+                                <a target="_blank" href="https://facebook.com/">www.facebook.com</a>
+                            </header><br />
+                            <p>
+                                A Facebook production with movie stars and its users acting together to 
+                                battle it out in courtroom about social inequality.
+                            </p>
+                            <footer>
+                                <ul class="actions">
+                                    <li><a href="facebook-movie-night.html" class="button">Details</a></li>
+                                </ul>
+                            </footer>
+                        </div>
+                    </section>
+                    <section class="spotlight">
+                        <span class="image"><img src="images/buzzfeed-logo-white-bg.png" alt="BuzzFeed logo" /></span>
+                        <div class="content">
+                            <header>
+                                <h3>BuzzFeed: Buzzer</h3>
+                                <a target="_blank" href="https://buzzfeed.com/">www.buzzfeed.com</a>
+                            </header><br />
+                            <p>
+                                If you like an article, click Like; if you love an article, 
+                                click Buzz.
+                            </p>
+                            <footer>
+                                <ul class="actions">
+                                    <li><a href="buzzfeed-buzzer.html" class="button">Details</a></li>
+                                </ul>
+                            </footer>
+                        </div>
+                    </section>
+                    <section class="spotlight">
+                        <span class="image"><img src="images/osdb-logo-trans.png" alt="OSDB logo" /></span>
+                        <div class="content">
+                            <header>
+                                <h3>OSDB: Build Up</h3>
+                                <a target="_blank" href="https://osdesignconsulting.com/">www.osdesignbuild.com</a>
+                            </header><br />
+                            <p>
+                                During recent George Floyd protests in downtown LA, some looters used the opportunity 
+                                to vandalize shops. <b>Build Up</b> is a pro bono project to restore those damaged 
+                                storefronts.
+                            </p>
+                            <footer>
+                                <ul class="actions">
+                                    <li><a href="osdb-build-up.html" class="button">Details</a></li>
+                                </ul>
+                            </footer>
+                        </div>
+                    </section>
+                    <section class="spotlight">
+                        <span class="image"><img src="images/jopwell-logo-trans.png" alt="Jopwell logo" /></span>
+                        <div class="content">
+                            <header>
+                                <h3>Jopwell: Job Assistant</h3>
+                                <a target="_blank" href="https://www.jopwell.com/">www.jopwell.com</a>
+                            </header><br />
+                            <p><b>Project Job Assistant</b> enables Jopwell users to connect to 
+                                job offers through its dedicated mobile App.</p>
+                            <footer>
+                                <ul class="actions">
+                                    <li><a href="jopwell-project.html" class="button">Details</a></li>
+                                </ul>
+                            </footer>
+                        </div>
+                    </section>
+                    <section class="spotlight">
+                        <span class="image"><img src="images/goweewee-logo-trans.png" alt="WeeWeeFree logo" /></span>
+                        <div class="content">
+                            <header>
+                                <h3>WeeWeeFree: WeeWee Symphony</h3>
+                                <a target="_blank" href="https://www.weeweefree.com/">www.weeweefree.com</a>
+                            </header><br />
+                            <p><b>Project WeeWee Symphony</b> utilizes noise canceling feature to block out "unwanted" 
+                                noises during restroom visit.</p>
+                            <footer>
+                                <ul class="actions">
+                                    <li><a href="goweewee-project.html" class="button">Details</a></li>
+                                </ul>
+                            </footer>
+                        </div>
+                    </section>
+                    <!--                    <section class="spotlight">
+                                            <span class="image"><img src="images/google-headquarters.png" alt="" /></span>
+                                            <div class="content">
+                                                <header>
+                                                    <h3>Google</h3>
+                                                    <a target="_blank" href="https://www.google.com/">www.google.com</a>
+                                                </header><br />
+                                                <p>Google LLC is an United States based multinational technology company 
+                                                    that specializes in Internet-related services and products, 
+                                                    which include online advertising technologies, a search engine, 
+                                                    cloud computing, software, and hardware.</p>
+                                                <footer>
+                                                    <ul class="actions">
+                                                        <li><a href="google-project.html" class="button">Details</a></li>
+                                                    </ul>
+                                                </footer>
+                                            </div>
+                                        </section>
+                                        <section class="spotlight">
+                                            <span class="image"><img src="images/facebook-hackerway.png" alt="" /></span>
+                                            <div class="content">
+                                                <header>
+                                                    <h3>Facebook: One+</h3>
+                                                    <a target="_blank" href="https://www.facebook.com/">www.facebook.com</a>
+                                                </header><br />
+                                                <p><b>Project One+</b> enables users to connect better according to photos.</p>
+                                                <footer>
+                                                    <ul class="actions">
+                                                        <li><a href="#" class="button">Details</a></li>
+                                                    </ul>
+                                                </footer>
+                                            </div>
+                                        </section>
+                                        <section class="spotlight">
+                                            <span class="image"><img src="images/apple-headquarter.png" alt="" /></span>
+                                            <div class="content">
+                                                <header>
+                                                    <h3>Apple</h3>
+                                                    <a target="_blank" href="https://www.apple.com/">www.apple.com</a>
+                                                </header><br />
+                                                <p>Apple Inc. is an American multinational technology 
+                                                    company headquartered in Cupertino, California, 
+                                                    that designs, develops, and sells consumer electronics, 
+                                                    computer software, and online services.</p>
+                                                <footer>
+                                                    <ul class="actions">
+                                                        <li><a href="" class="button">Details</a></li>
+                                                    </ul>
+                                                </footer>
+                                            </div>
+                                        </section>-->
+                    <p>
+                        <!--                        <code>Last update: July 13<sup>th</sup>, 2020</code><br />-->
+                        <sub>*Note: I have never worked at some of the 
+                            companies listed.</sub>
+                    </p>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="projects.html" class="button special">View More</a></li>
+                        </ul>
+                    </footer>
+                </div>
+            </section>
+
+            <!-- Three -->
+            <!--            <section class="wrapper style3 special">
+                            <div class="inner">
+                                <header>
+                                    <h2>Amet ullamcorper</h2>
+                                    <p>Aptent taciti sociosqu litora torquent et conubia sed etiam.<br />
+                                        Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam<br />
+                                        turpis mauris, ultricies erat malesuada quis.</p>
+                                </header>
+                                <footer>
+                                    <ul class="actions">
+                                        <li><a href="#" class="button big">Get Started</a></li>
+                                    </ul>
+                                </footer>
+                            </div>
+                        </section>-->
+
+            <!-- Footer -->
+            <section id="footer" class="wrapper split style2">
+                <div class="inner">
+                    <section>
+                        <header>
+                            <h3 id="contact-me-form-target">Love to Hear From You</h3>
+                        </header>
+                        <p>Whether you have questions, feedback or anything in between, I am always 
+                            happy to answer.</p>
+                        <ul class="icons">
+                            <li><a target="_blank" href="https://linkedin.com/in/stefan-george" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                            <li><a target="_blank" href="https://github.com/stefanblahblah/from128" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <form id="contact-form" method="post" action="javascript:contact_me()">
+                            <div class="field half first"><input type="text" name="name" id="name" placeholder="Name" /></div>
+                            <div class="field half"><input type="email" name="email" id="email" placeholder="Email" /></div>
+                            <div class="field"><textarea name="feedback" id="feedback" placeholder="Message" rows="4"></textarea></div>
+                            <ul class="actions">
+                                <li><input type="submit" value="Send Message" /></li>
+                            </ul>
+                        </form>
+                    </section>
+                </div>
+                <div class="copyright">
+                    <p>&copy; <script>document.write(new Date().getFullYear())</script> from128.com, Inc.</p>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.3.5.1.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="assets/js/main.js"></script>
+
+    </body>
+</html>
